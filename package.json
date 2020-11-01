@@ -1,0 +1,20 @@
+{
+  "name": "du_template",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "web": "nodemon ./webserver/server.js",
+    "compile": "nodemon ./manager/compile.js --config manager/nodemon_configs/nodemon_compile.json",
+    "decompile": "nodemon ./manager/decompile.js --config manager/nodemon_configs/nodemon_decompile.json",
+    "init": "node ./manager/init.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "filenamify": "^4.2.0",
+    "nodemon": "^2.0.6"
+  }
+}

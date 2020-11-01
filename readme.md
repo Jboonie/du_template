@@ -1,0 +1,1 @@
+This a node template for decompiling and recompiling Dual Universe control board scripts.

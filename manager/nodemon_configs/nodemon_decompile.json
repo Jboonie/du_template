@@ -1,0 +1,8 @@
+{
+    "ignore": [
+        ".git",
+        "node_modules/**/node_modules",
+        "du_script/json/readable"
+      ],
+    "ext": "html,js,json"
+}
