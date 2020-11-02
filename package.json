@@ -10,7 +10,8 @@
     "compile_dev": "nodemon ./manager/compile.js --config manager/nodemon_configs/nodemon_compile.json",
     "decompile_dev": "nodemon ./manager/decompile.js --config manager/nodemon_configs/nodemon_decompile.json",
     "init": "node ./manager/init.js",
-    "clean": "node ./manager/clean.js"
+    "clean": "node ./manager/clean.js",
+    "test": "jest"
   },
   "author": "",
   "license": "ISC",
@@ -19,5 +20,8 @@
     "express": "^4.17.1",
     "filenamify": "^4.2.0",
     "nodemon": "^2.0.6"
+  },
+  "devDependencies": {
+    "jest": "^26.6.1"
   }
 }
