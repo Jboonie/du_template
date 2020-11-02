@@ -1,31 +1,44 @@
 const fs = require('fs');
+var _ = require('lodash');
 
+compile();
 
-const slots = getProjectConfig();
-const handlers = combineConfigs(getConfigs());
-const code = getProjectLua();
-updateHandlerCode(handlers, code);
-const events = [];
-const methods = [];
+function compile(){
+    const slots = getProjectConfig();
+    const handlers = combineConfigs();
+    const updatedHandlers = updateHandlerCode(handlers, getProjectLua());
+    const events = [];
+    const methods = [];
+    
+    const compileData = {
+        slots: slots,
+        handlers: updatedHandlers,
+        events: events,
+        methods: methods
+    };
+    
+    fs.writeFileSync('./du_script/json/readable/config.json', JSON.stringify(compileData, null, 2));
+    fs.writeFileSync('./du_script/json/raw/config.json', JSON.stringify(compileData));
+}
 
-const compileData = {
-    slots: slots,
-    handlers: handlers,
-    events: events,
-    methods: methods
-};
-
-fs.writeFileSync('./du_script/json/readable/config.json', JSON.stringify(compileData, null, 2));
-fs.writeFileSync('./du_script/json/raw/config.json', JSON.stringify(compileData));
 
 function updateHandlerCode(handlers, codes){
-    handlers.forEach(item => {
+    // handlers.forEach(item => {
+    //     codes.forEach(code => {
+    //         if(parseInt(code.index) == item.key){
+    //             item.code = code.code;
+    //         }
+    //     })
+    // })
+    const data = _.cloneDeep(handlers);
+    data.forEach(item => {
         codes.forEach(code => {
             if(parseInt(code.index) == item.key){
                 item.code = code.code;
             }
         })
     })
+    return data;
 }
 
 function getProjectConfig(){
@@ -60,7 +73,8 @@ function getConfigFiles(dir){
     return files;
 }
 
-function combineConfigs(configs){
+function combineConfigs(){
+    const configs = getConfigs();
     let config = [];
     configs.forEach(item => {
         config.push(JSON.parse(fs.readFileSync(item.location))[0]);
