@@ -2,7 +2,8 @@
     "ignore": [
         ".git",
         "node_modules/**/node_modules",
-        "du_script/json/readable"
+        "du_script/json/readable",
+        "du_script/lua/"
       ],
     "ext": "html,js,json"
 }

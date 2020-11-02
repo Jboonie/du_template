@@ -5,9 +5,12 @@
   "main": "server.js",
   "scripts": {
     "web": "nodemon ./webserver/server.js",
-    "compile": "nodemon ./manager/compile.js --config manager/nodemon_configs/nodemon_compile.json",
-    "decompile": "nodemon ./manager/decompile.js --config manager/nodemon_configs/nodemon_decompile.json",
-    "init": "node ./manager/init.js"
+    "compile": "node ./manager/compile.js",
+    "decompile": "node ./manager/decompile.js",
+    "compile_dev": "nodemon ./manager/compile.js --config manager/nodemon_configs/nodemon_compile.json",
+    "decompile_dev": "nodemon ./manager/decompile.js --config manager/nodemon_configs/nodemon_decompile.json",
+    "init": "node ./manager/init.js",
+    "clean": "node ./manager/clean.js"
   },
   "author": "",
   "license": "ISC",
